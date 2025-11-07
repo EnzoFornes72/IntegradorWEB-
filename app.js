@@ -1,19 +1,11 @@
-// Esperamos a que el DOM esté cargado para ejecutar el script
 document.addEventListener("DOMContentLoaded", function() {
-
-    /**
-     * LÓGICA DEL CARRUSEL (Página Principal)
-     *
-     */
-
     const carouselImage = document.getElementById("carouselImage");
-    if (carouselImage) {
+    if (carouselImage) {       
         
-        // 1. Array sin imágenes (solo cadenas vacías, como se solicitó)
         const images = [
-            "", 
-            "", 
-            ""  
+            "imagenes/Mirador_del_Sol_Camino_al_filo_serrano.jpg", 
+            "imagenes/potrero_de_los_funes.jpg", 
+            "imagenes/salto-del-tabaquillo2.jpg"  
         ];
         
         let currentIndex = 0;
@@ -21,22 +13,16 @@ document.addEventListener("DOMContentLoaded", function() {
         const prevBtn = document.getElementById("prevBtn");
         const nextBtn = document.getElementById("nextBtn");
 
-        // Función para actualizar la imagen mostrada
         function updateImage() {
-            // Nota: Se usa un color sólido temporal aquí. 
-            // Si el array contiene una cadena vacía, el src de la imagen estará vacío.
             carouselImage.src = images[currentIndex]; 
-            
-            // Para fines de visibilidad, podemos cambiar el fondo del contenedor si el src es vacío.
             const container = document.querySelector('.carousel-container');
             if (images[currentIndex] === "") {
-                 container.style.backgroundColor = '#d0d0d0'; // Fondo gris claro
+                 container.style.backgroundColor = '#d0d0d0';
             } else {
                  container.style.backgroundColor = 'transparent';
             }
         }
 
-        // Botón Siguiente (Lógica circular)
         nextBtn.addEventListener("click", function() {
             currentIndex++;
             if (currentIndex >= images.length) {
@@ -45,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
             updateImage();
         });
 
-        // Botón Anterior (Lógica circular)
+
         prevBtn.addEventListener("click", function() {
             currentIndex--;
             if (currentIndex < 0) {
@@ -54,15 +40,10 @@ document.addEventListener("DOMContentLoaded", function() {
             updateImage();
         });
 
-        // Cargar la primera imagen al iniciar
         updateImage();
     }
 
 
-    /**
-     * LÓGICA DE VALIDACIÓN DEL FORMULARIO (Página Contacto)
-     *
-     */
     
     const contactForm = document.getElementById("contactForm");
     if (contactForm) {
@@ -109,12 +90,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 isValid = false;
             }
 
-            // 4. Resultado
+           
             const successContainer = document.getElementById("form-success");
             successContainer.innerHTML = ""; 
 
             if (isValid) {
-                // Éxito: Mostrar datos con createElement
                 const successTitle = document.createElement("h3");
                 successTitle.textContent = "¡Consulta enviada con éxito!";
 
