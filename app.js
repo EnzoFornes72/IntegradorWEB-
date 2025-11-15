@@ -95,6 +95,8 @@ document.addEventListener("DOMContentLoaded", function() {
             successContainer.innerHTML = ""; 
 
             if (isValid) {
+                successContainer.style.display = "block";
+
                 const successTitle = document.createElement("h3");
                 successTitle.textContent = "¡Consulta enviada con éxito!";
 
